@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appName }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.appName }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appName }}
+    spec:
+      containers:
+      - name: {{ .Values.appName }}
+        image: "ghcr.io/michalsy/{{ .Values.appName }}:{{ .Values.appVersion }}"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.appName }}-service
+spec:
+  selector:
+    app: {{ .Values.appName }}
+  ports:
+  - port: 8080
+    protocol: TCP
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Values.appName }}-route
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host("{{ .Values.appName }}.sytko.de")
+      kind: Rule
+      services:
+        - name: {{ .Values.appName }}-service
+          port: 8080

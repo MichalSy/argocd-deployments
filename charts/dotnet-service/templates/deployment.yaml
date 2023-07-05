@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.appName }}
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:

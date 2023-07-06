@@ -2,4 +2,6 @@ appName: michalsy/task-scheduler
 appVersion: 1.1.eef590
 replicaCount: 1appName: michalsy/task-scheduler
 appVersion: 1.1.3eccf8
-replicaCount: 1
+replicaCount: 1appName: michalsy/task-scheduler
+appVersion: 1.1.8eafa9
+replicaCount: 5

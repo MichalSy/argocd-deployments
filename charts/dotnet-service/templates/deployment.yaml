@@ -16,12 +16,12 @@ spec:
       - name: {{ .Values.appName }}
         image: "ghcr.io/michalsy/{{ .Values.appName }}:{{ .Values.appVersion }}"
         env:
-          {{- range $secretname, $key := .Values.secrets }}
+          {{- range $secretname := .Values.secrets }}
           - name: {{ $secretname }}
             valueFrom:
               secretKeyRef:
                 name: {{ .Values.appName }}
-                key: {{ $key }}
+                key: {{ $secretname }}
           {{- end }}
 
 ---

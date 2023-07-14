@@ -15,6 +15,14 @@ spec:
       containers:
       - name: {{ .Values.appName }}
         image: "ghcr.io/michalsy/{{ .Values.appName }}:{{ .Values.appVersion }}"
+        env:
+          {{- range $name, $value := .Values.secrets }}
+          - name: {{ .Values.appName }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ $secretname }}
+                key: {{ $key }}
+          {{- end }}
 
 ---
 

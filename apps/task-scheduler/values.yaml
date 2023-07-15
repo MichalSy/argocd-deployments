@@ -1,3 +1,5 @@
 appName: task-scheduler
-appVersion: 1.1.e7b86b
-replicaCount: 5
+appVersion: 1.1.1bb1ae
+replicaCount: 1
+secrets:
+  - name: ConnectionString

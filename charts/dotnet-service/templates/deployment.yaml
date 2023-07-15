@@ -18,16 +18,9 @@ spec:
         env:
         - name: ConnectionString
           valueFrom:
-          secretKeyRef:
-            name: task-scheduler
-            key: ConnectionString
-          # {{- range $index, $name := .Values.secrets }}
-          # - name: {{ $name }}
-          #   valueFrom:
-          #     secretKeyRef:
-          #       name: {{ .Values.appName }}
-          #       key: {{ $name }}
-          # {{- end }}
+            secretKeyRef:
+              name: task-scheduler
+              key: ConnectionString
 
 ---
 

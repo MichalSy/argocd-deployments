@@ -16,12 +16,13 @@ spec:
       - name: {{ .Values.appName }}
         image: "ghcr.io/michalsy/{{ .Values.appName }}:{{ .Values.appVersion }}"
         env:
-        - name: ConnectionString
+        {{- range $v := .Values.customizedFactorImplVolume }}
+        - name: {{ $v.name }}
           valueFrom:
             secretKeyRef:
-              name: task-scheduler
-              key: ConnectionString
-
+              name: {{ .Values.appName }}
+              key: {{ $v.name }}
+        {{- end }}
 ---
 
 apiVersion: v1

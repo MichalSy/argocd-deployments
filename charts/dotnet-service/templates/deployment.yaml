@@ -16,7 +16,7 @@ spec:
       - name: {{ .Values.appName }}
         image: "ghcr.io/michalsy/{{ .Values.appName }}:{{ .Values.appVersion }}"
         env:
-        {{ if eq .Values.bindSecrets.neo4j true }}
+        {{- if .Values.bindSecrets.neo4j }}
         - name: NEO4J_SERVER
           valueFrom:
             secretKeyRef:

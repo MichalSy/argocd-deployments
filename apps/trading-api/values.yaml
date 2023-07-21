@@ -1,5 +1,9 @@
 appName: trading-api
-appVersion: 1.1.eff999
+appVersion: 1.1.ef9a9f
 replicaCount: 1
 bindSecrets:
   neo4j: true
+secrets:
+  - name: ZERODIF_SERVER
+  - name: ZERODIF_USER
+  - name: ZERODIF_PASSWORD

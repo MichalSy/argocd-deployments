@@ -1,5 +1,5 @@
 appName: trading-api
-appVersion: 1.1.ef9a9f
+appVersion: 1.1.e48759
 replicaCount: 1
 bindSecrets:
   neo4j: true

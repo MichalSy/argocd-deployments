@@ -1,5 +1,5 @@
 appName: trading-api
-appVersion: 1.1.7efd7e
+appVersion: 1.1.77d5c3
 replicaCount: 1
 secrets:
   - name: ZERODIF_SERVER
